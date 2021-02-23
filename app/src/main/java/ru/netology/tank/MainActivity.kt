@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
             KEYCODE_DPAD_LEFT -> tankDrawer.move(myTank, LEFT, elementsDrawer.elementOnContainer)
             KEYCODE_DPAD_DOWN -> tankDrawer.move(myTank, DOWN, elementsDrawer.elementOnContainer)
             KEYCODE_DPAD_RIGHT -> tankDrawer.move(myTank, RIGHT, elementsDrawer.elementOnContainer)
-            KEYCODE_SPACE -> bulletDrawer.drawBullet(myTank, tankDrawer.currentDirection)
+            KEYCODE_SPACE -> bulletDrawer.makeBulletMove(myTank, tankDrawer.currentDirection)
         }
         return super.onKeyDown(keyCode, event)
     }

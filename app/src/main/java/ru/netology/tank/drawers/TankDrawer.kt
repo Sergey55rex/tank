@@ -8,6 +8,7 @@ import ru.netology.tank.VERTICAL_MAX_SIZE
 import ru.netology.tank.enums.Direction
 import ru.netology.tank.models.Coordinate
 import ru.netology.tank.models.Element
+import ru.netology.tank.utils.checkViewCanMoveThrougBorder
 
 class TankDrawer(val container: FrameLayout) {
 
@@ -37,7 +38,7 @@ class TankDrawer(val container: FrameLayout) {
             }
         }
         val nextCoordinate = Coordinate(layoutParams.topMargin, layoutParams.leftMargin)  //save after change
-        if (checkTankCanMoveThrougBorder(nextCoordinate, myTank)
+        if (myTank.checkViewCanMoveThrougBorder(nextCoordinate)
                 && checkTankCanMoveThrougMaterial(nextCoordinate, elementOnContainer)
         ) {
             container.removeView(myTank)
