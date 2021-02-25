@@ -4,6 +4,7 @@ import android.view.View
 import ru.netology.tank.HORISONTAL_MAX_SIZE
 import ru.netology.tank.VERTICAL_MAX_SIZE
 import ru.netology.tank.models.Coordinate
+import ru.netology.tank.models.Element
 
 
 fun View.checkViewCanMoveThrougBorder(coordinate: Coordinate): Boolean{
@@ -16,3 +17,6 @@ fun View.checkViewCanMoveThrougBorder(coordinate: Coordinate): Boolean{
     }
     return false
 }
+
+fun getElementByCoordinates(coordinate: Coordinate, elementOnContainer:List<Element>) =
+        elementOnContainer.firstOrNull { it.coordinate == coordinate }

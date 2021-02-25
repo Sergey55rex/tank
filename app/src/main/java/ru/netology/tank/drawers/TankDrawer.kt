@@ -9,10 +9,11 @@ import ru.netology.tank.enums.Direction
 import ru.netology.tank.models.Coordinate
 import ru.netology.tank.models.Element
 import ru.netology.tank.utils.checkViewCanMoveThrougBorder
+import ru.netology.tank.utils.getElementByCoordinates
 
 class TankDrawer(val container: FrameLayout) {
 
-    var currentDirection = Direction.DOWN
+    var currentDirection = Direction.UP
     fun move(myTank: View, direction: Direction, elementOnContainer:List<Element>) {
         val layoutParams = myTank.layoutParams as FrameLayout.LayoutParams
         val currentCoordinate = Coordinate(layoutParams.topMargin, layoutParams.leftMargin) //save before change
@@ -21,19 +22,15 @@ class TankDrawer(val container: FrameLayout) {
 
         when (direction) {
             Direction.UP -> {
-//                myTank.rotation = 0f
                 (myTank.layoutParams as FrameLayout.LayoutParams).topMargin += -CELL_SIZE
             }
             Direction.DOWN -> {
-//                myTank.rotation = 180f
                 (myTank.layoutParams as FrameLayout.LayoutParams).topMargin += CELL_SIZE
             }
             Direction.RIGHT -> {
-//                myTank.rotation = 90f
                 (myTank.layoutParams as FrameLayout.LayoutParams).leftMargin += CELL_SIZE
             }
             Direction.LEFT -> {
-//                myTank.rotation = 270f
                 (myTank.layoutParams as FrameLayout.LayoutParams).leftMargin += -CELL_SIZE
             }
         }
@@ -59,20 +56,20 @@ class TankDrawer(val container: FrameLayout) {
         }
         return true
     }
+//
+//    private fun getElementByCoordinates(coordinate: Coordinate, elementOnContainer:List<Element>) =
+//            elementOnContainer.firstOrNull { it.coordinate == coordinate }
 
-    private fun getElementByCoordinates(coordinate: Coordinate, elementOnContainer:List<Element>) =
-            elementOnContainer.firstOrNull { it.coordinate == coordinate }
-
-    private fun checkTankCanMoveThrougBorder(coordinate: Coordinate, myTank: View): Boolean{
-        if (coordinate.top >= 0
-                && coordinate.top + myTank.height < HORISONTAL_MAX_SIZE
-                && coordinate.left >= 0
-                && coordinate.left + myTank.width < VERTICAL_MAX_SIZE
-        ){
-            return true
-        }
-        return false
-    }
+//    private fun checkTankCanMoveThrougBorder(coordinate: Coordinate, myTank: View): Boolean{
+//        if (coordinate.top >= 0
+//                && coordinate.top + myTank.height < HORISONTAL_MAX_SIZE
+//                && coordinate.left >= 0
+//                && coordinate.left + myTank.width < VERTICAL_MAX_SIZE
+//        ){
+//            return true
+//        }
+//        return false
+//    }
 
     private fun getTankCoordinates(topLeftCoordinate: Coordinate): List<Coordinate>{
         val coordinateList = mutableListOf<Coordinate>()

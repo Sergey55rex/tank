@@ -14,6 +14,7 @@ import ru.netology.tank.enums.Direction
 import ru.netology.tank.enums.Material
 import ru.netology.tank.models.Coordinate
 import ru.netology.tank.models.Element
+import ru.netology.tank.utils.getElementByCoordinates
 
 class ElementsDrawer(val container: FrameLayout) {
 
@@ -33,7 +34,7 @@ class ElementsDrawer(val container: FrameLayout) {
     }
 
     private fun drawOrReplaceView(coordinate: Coordinate){
-        val viewOnCoordinate = getElementByCoordinates(coordinate)
+        val viewOnCoordinate = getElementByCoordinates(coordinate, elementOnContainer)
         if (viewOnCoordinate==null){
             drawView(coordinate)
             return
@@ -49,11 +50,11 @@ class ElementsDrawer(val container: FrameLayout) {
         drawView(coordinate)
     }
 
-   private fun getElementByCoordinates(coordinate: Coordinate) =
-            elementOnContainer.firstOrNull { it.coordinate == coordinate }
+//   private fun getElementByCoordinates(coordinate: Coordinate) =
+//            elementOnContainer.firstOrNull { it.coordinate == coordinate }
 
     private fun eraseView(coordinate: Coordinate){
-        val elementOnCoordinate = getElementByCoordinates(coordinate)
+        val elementOnCoordinate = getElementByCoordinates(coordinate, elementOnContainer)
         if (elementOnCoordinate != null){
             val erasingView = container.findViewById<View>(elementOnCoordinate.viewId)
             container.removeView(erasingView)
